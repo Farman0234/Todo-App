@@ -7,14 +7,15 @@ function AddTodo() {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
-  const addToodoHandle = (e) => {
+  const addTodoHandle = (e) => {
     e.preventDefault();
-    dispatch(addTodo(value));
+    if (input.trim() === "") return;
+    dispatch(addTodo(input));
     setInput("");
   };
 
   return (
-    <form onSubmit={addToodoHandle} className="group">
+    <form onSubmit={addTodoHandle} className="group">
       <div className="flex items-stretch gap-2">
         <div className="relative flex-1">
           <input
@@ -46,4 +47,5 @@ function AddTodo() {
     </form>
   );
 }
+
 export default AddTodo;
